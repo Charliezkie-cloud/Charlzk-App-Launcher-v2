@@ -1,0 +1,136 @@
+// Colors
+$primary: #323232 !default;
+
+// Body
+$body-color-dark: rgba(white, 80%) !default;
+$body-bg-dark: #101010 !default;
+
+$body-secondary-color-dark: rgba(white, 60%) !default;
+$body-secondary-bg-dark: #1F1F1F !default;
+
+$body-tertiary-color-dark: $body-secondary-color-dark !default;
+$body-tertiary-bg-dark: #161616 !default;
+
+// Input
+$input-bg: $primary !default;
+$input-color: $body-color-dark !default;
+$input-border-color: transparent !default;
+$input-placeholder-color: $body-secondary-color-dark;
+
+// Border radius
+$border-radius: 5px;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@import "../node_modules/bootstrap/scss/functions";
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+html,body {
+  margin: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: "Inter", serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Josefin Sans", serif;
+}
+
+#onlineGames {
+  height: 90vh;
+  overflow-y: auto;
+}
+
+.list {
+  .item {
+    height: 300px;
+    width: 400px;
+
+    .background {
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    .background-overlay {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: rgb(22,22,22);
+      background: -moz-linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 100%);
+      background: -webkit-linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 100%);
+      background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.5) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
+      transition: all 0.5s cubic-bezier(0,.3,0,1);
+    }
+
+    .hover {
+      z-index: 2;
+      overflow-y: auto;
+      opacity: 0%;
+      transition: opacity 0.5s cubic-bezier(0,.3,0,1);
+
+      .open-btn {
+        color: $primary;
+        background: rgb(59,211,196);
+        background: -moz-linear-gradient(0deg, rgba(59,211,196,1) 0%, rgba(38,193,148,1) 100%);
+        background: -webkit-linear-gradient(0deg, rgba(59,211,196,1) 0%, rgba(38,193,148,1) 100%);
+        background: linear-gradient(0deg, rgba(59,211,196,1) 0%, rgba(38,193,148,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3bd3c4",endColorstr="#26c194",GradientType=1);
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          background: rgb(38,130,193);
+          background: -moz-linear-gradient(0deg, rgba(38,130,193,1) 0%, rgba(59,211,196,1) 100%);
+          background: -webkit-linear-gradient(0deg, rgba(38,130,193,1) 0%, rgba(59,211,196,1) 100%);
+          background: linear-gradient(0deg, rgba(38,130,193,1) 0%, rgba(59,211,196,1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2682c1",endColorstr="#3bd3c4",GradientType=1);
+        }
+      }
+    }
+
+    .default {
+      z-index: 3;
+      opacity: 100%;
+      transition: opacity 0.25s cubic-bezier(0,.3,0,1);
+    }
+
+    &:hover {
+      .background-overlay {
+        background: rgb(22,22,22);
+        background: -moz-linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.9) 100%);
+        background: -webkit-linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.9) 100%);
+        background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(22,22,22,0.9) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
+      }
+      .hover {
+        z-index: 3;
+        opacity: 100%;
+      }
+      .default {
+        z-index: 2;
+        opacity: 0%;
+      }
+    }
+  }
+}
