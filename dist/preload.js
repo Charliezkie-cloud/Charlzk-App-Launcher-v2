@@ -4,12 +4,12 @@ const electron_1 = require("electron");
 function onLoad() {
     electron_1.ipcRenderer.send("fromRenderer:onLoad");
 }
-function onLoadReply(callback) {
-    electron_1.ipcRenderer.on("fromMain:onLoadReply", (event, message) => {
-        callback(message);
+function apps(callback) {
+    electron_1.ipcRenderer.on("fromMain:apps", (event, data) => {
+        callback(data);
     });
 }
 electron_1.contextBridge.exposeInMainWorld("electron", {
     onLoad,
-    onLoadReply
+    apps
 });

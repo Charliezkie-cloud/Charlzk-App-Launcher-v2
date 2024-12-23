@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
 const node_path_1 = __importDefault(require("node:path"));
 const electron_squirrel_startup_1 = __importDefault(require("electron-squirrel-startup"));
+const promises_1 = require("node:fs/promises");
 if (electron_squirrel_startup_1.default) {
     electron_1.app.quit();
 }
@@ -21,9 +31,36 @@ const createWindow = () => {
     });
     mainWindow.loadFile(node_path_1.default.join(__dirname, 'index.html'));
     mainWindow.webContents.openDevTools();
-    electron_1.ipcMain.on("fromRenderer:onLoad", (event) => {
-        event.reply("fromMain:onLoadReply", "From main: Hello World!");
-    });
+    electron_1.ipcMain.on("fromRenderer:onLoad", (event) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const jsonFile = yield (0, promises_1.readFile)(node_path_1.default.join(__dirname, "apps.config.json"), { encoding: "utf-8" });
+            const jsonData = JSON.parse(jsonFile);
+            const files = yield (0, promises_1.readdir)(node_path_1.default.join(__dirname, "shortcuts"));
+            const newData = [];
+            for (const file of files) {
+                const filteredData = jsonData.filter(app => app.shortcut === file);
+                newData.push(...filteredData);
+            }
+            const removeDuplicates = newData.filter((value, index, self) => index === self.findIndex((t) => (t.shortcut === value.shortcut)));
+            for (const file of files) {
+                if (!(removeDuplicates.some(({ shortcut }) => shortcut === file))) {
+                    newData.push({
+                        "name": file.split(".")[0],
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+                        "shortcut": file,
+                        "banner": "#",
+                        "category": "OnlineGames"
+                    });
+                }
+            }
+            const newDataString = JSON.stringify(newData, null, 4);
+            yield (0, promises_1.writeFile)(node_path_1.default.join(__dirname, "apps.config.json"), newDataString);
+            event.reply("fromMain:apps", newData);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }));
 };
 electron_1.app.whenReady().then(() => {
     createWindow();

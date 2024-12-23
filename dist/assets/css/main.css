@@ -18794,32 +18794,6 @@ progress {
     display: none !important;
   }
 }
-html, body {
-  margin: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  font-family: "Inter", serif;
-}
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: "Josefin Sans", serif;
-}
-
-main {
-  background: url("../img/Background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-main .col-2 {
-  background: rgba(22, 22, 22, 0.5);
-}
-
-#onlineGames {
-  height: 90vh;
-  overflow-y: auto;
-}
-
 .animate-to-top {
   position: relative;
   top: 150px;
@@ -18838,16 +18812,46 @@ main .col-2 {
   opacity: 0%;
 }
 
-.list .item {
+html, body {
+  margin: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: "Inter", serif;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: "Josefin Sans", serif;
+}
+
+header .navbar {
+  background: rgba(22, 22, 22, 0.75);
+  backdrop-filter: blur(5px);
+}
+
+main {
+  background: url("../img/Background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .col-2 {
+  background: rgba(22, 22, 22, 0.75);
+  backdrop-filter: blur(5px);
+}
+main #onlineGames {
+  height: 90vh;
+  overflow-y: auto;
+}
+main .list .item {
   height: 300px;
   width: 400px;
 }
-.list .item .background {
+main .list .item .background {
   object-fit: cover;
   object-position: center;
   z-index: 0;
 }
-.list .item .background-overlay {
+main .list .item .background-overlay {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -18859,13 +18863,13 @@ main .col-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
   transition: all 0.5s cubic-bezier(0, 0.3, 0, 1);
 }
-.list .item .hover {
+main .list .item .hover {
   z-index: 2;
   overflow-y: auto;
   opacity: 0%;
   transition: opacity 0.5s cubic-bezier(0, 0.3, 0, 1);
 }
-.list .item .hover .open-btn {
+main .list .item .hover .open-btn {
   color: #323232;
   background: rgb(59, 211, 196);
   background: -moz-linear-gradient(0deg, rgb(59, 211, 196) 0%, rgb(38, 193, 148) 100%);
@@ -18874,30 +18878,30 @@ main .col-2 {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3bd3c4",endColorstr="#26c194",GradientType=1);
   transition: all 0.5s ease-in-out;
 }
-.list .item .hover .open-btn:hover {
+main .list .item .hover .open-btn:hover {
   background: rgb(38, 130, 193);
   background: -moz-linear-gradient(0deg, rgb(38, 130, 193) 0%, rgb(59, 211, 196) 100%);
   background: -webkit-linear-gradient(0deg, rgb(38, 130, 193) 0%, rgb(59, 211, 196) 100%);
   background: linear-gradient(0deg, rgb(38, 130, 193) 0%, rgb(59, 211, 196) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2682c1",endColorstr="#3bd3c4",GradientType=1);
 }
-.list .item .default {
+main .list .item .default {
   z-index: 3;
   opacity: 100%;
   transition: opacity 0.25s cubic-bezier(0, 0.3, 0, 1);
 }
-.list .item:hover .background-overlay {
+main .list .item:hover .background-overlay {
   background: rgb(22, 22, 22);
   background: -moz-linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(22, 22, 22, 0.9) 100%);
   background: -webkit-linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(22, 22, 22, 0.9) 100%);
   background: linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(22, 22, 22, 0.9) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
 }
-.list .item:hover .hover {
+main .list .item:hover .hover {
   z-index: 3;
   opacity: 100%;
 }
-.list .item:hover .default {
+main .list .item:hover .default {
   z-index: 2;
   opacity: 0%;
 }
