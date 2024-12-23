@@ -18805,9 +18805,37 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: "Josefin Sans", serif;
 }
 
+main {
+  background: url("../img/Background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .col-2 {
+  background: rgba(22, 22, 22, 0.5);
+}
+
 #onlineGames {
   height: 90vh;
   overflow-y: auto;
+}
+
+.animate-to-top {
+  position: relative;
+  top: 150px;
+  opacity: 0%;
+}
+
+.animate-to-bottom {
+  position: relative;
+  top: -150px;
+  opacity: 0%;
+}
+
+.animate-to-right {
+  position: relative;
+  left: -150px;
+  opacity: 0%;
 }
 
 .list .item {
