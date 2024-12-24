@@ -9,7 +9,11 @@ function apps(callback) {
         callback(data);
     });
 }
+function openApp(name, shortcut) {
+    electron_1.ipcRenderer.send("fromRenderer:openApp", name, shortcut);
+}
 electron_1.contextBridge.exposeInMainWorld("electron", {
     onLoad,
-    apps
+    apps,
+    openApp
 });

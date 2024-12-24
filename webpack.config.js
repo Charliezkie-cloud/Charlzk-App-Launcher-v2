@@ -1,9 +1,9 @@
 const path = require('path');
 
-const filename = "animation";
+const filename = "renderer";
 
 module.exports = {
-  entry: `./webpack/${filename}.ts`,
+  entry: `./src/${filename}.ts`,
   module: {
     rules: [
       {
@@ -18,6 +18,6 @@ module.exports = {
   },
   output: {
     filename: `${filename}.js`,
-    path: path.resolve(__dirname, 'dist', "assets", "js"),
+    path: path.resolve(__dirname, "dist"),
   },
 };

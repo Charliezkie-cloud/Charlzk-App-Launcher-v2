@@ -1,17 +1,8 @@
-export interface App {
-  "name": string,
-  "description": string,
-  "shortcut": string,
-  "banner": string,
-
-  // Category: "OnlineGames", "OfflineGames", "Apps"
-  "category": string
-}
-
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { exec } from 'node:child_process';
 
 if (started) {
   app.quit();
@@ -56,7 +47,7 @@ const createWindow = () => {
             "name": file.split(".")[0],
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
             "shortcut": file,
-            "banner": "#",
+            "banner": "Placeholder.jpg",
             "category": "OnlineGames"
           });
         }
@@ -71,6 +62,15 @@ const createWindow = () => {
       console.error(error);
     }
   });
+
+  ipcMain.on("fromRenderer:openApp", (event, name:string, shortcut: string) => {
+    const shortcutPath = path.join(__dirname, "shortcuts", shortcut);
+    exec(`start "${name}" "${shortcutPath}"`, (err) => {
+      if (err) {
+        return dialog.showErrorBox("Error", err.message);
+      }
+    });
+  })
 };
 
 app.whenReady().then(() => {
@@ -88,3 +88,12 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+export interface App {
+  "name": string,
+  "description": string,
+  "shortcut": string,
+  "banner": string,
+  // Category: "OnlineGames", "OfflineGames", "Apps"
+  "category": string
+}

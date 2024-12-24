@@ -12,7 +12,12 @@ function apps(callback: (data: App[]) => void) {
   });
 }
 
+function openApp(name: string, shortcut: string) {
+  ipcRenderer.send("fromRenderer:openApp", name, shortcut);
+}
+
 contextBridge.exposeInMainWorld("electron", {
   onLoad,
-  apps 
+  apps,
+  openApp
 });

@@ -5,6 +5,7 @@ declare global {
     electron: {
       onLoad: () => void;
       apps: (callback: (data: App[]) => void) => void;
+      openApp: (name: string, shortcut: string) => void;
     }
   }
 }

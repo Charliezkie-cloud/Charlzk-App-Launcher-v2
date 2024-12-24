@@ -18829,10 +18829,20 @@ header .navbar {
 }
 
 main {
-  background: url("../img/Background.png");
+  background: url("../img/backgrounds/Background-1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+main:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(22, 22, 22, 0.25);
 }
 main .col-2 {
   background: rgba(22, 22, 22, 0.75);
@@ -18844,7 +18854,7 @@ main #onlineGames {
 }
 main .list .item {
   height: 300px;
-  width: 400px;
+  width: auto;
 }
 main .list .item .background {
   object-fit: cover;

@@ -16,6 +16,7 @@ const electron_1 = require("electron");
 const node_path_1 = __importDefault(require("node:path"));
 const electron_squirrel_startup_1 = __importDefault(require("electron-squirrel-startup"));
 const promises_1 = require("node:fs/promises");
+const node_child_process_1 = require("node:child_process");
 if (electron_squirrel_startup_1.default) {
     electron_1.app.quit();
 }
@@ -48,7 +49,7 @@ const createWindow = () => {
                         "name": file.split(".")[0],
                         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
                         "shortcut": file,
-                        "banner": "#",
+                        "banner": "Placeholder.jpg",
                         "category": "OnlineGames"
                     });
                 }
@@ -61,6 +62,14 @@ const createWindow = () => {
             console.error(error);
         }
     }));
+    electron_1.ipcMain.on("fromRenderer:openApp", (event, name, shortcut) => {
+        const shortcutPath = node_path_1.default.join(__dirname, "shortcuts", shortcut);
+        (0, node_child_process_1.exec)(`start "${name}" "${shortcutPath}"`, (err) => {
+            if (err) {
+                return electron_1.dialog.showErrorBox("Error", err.message);
+            }
+        });
+    });
 };
 electron_1.app.whenReady().then(() => {
     createWindow();

@@ -61,20 +61,54 @@
 
         <div id="onlineGames" class="p-4">
           <h2 class="mb-3 animate-to-top">Online Games</h2>
-          <div class="list grid">
+          <div id="onlineGamesList" class="list grid">
             
-            <div class="item position-relative animate-to-top">
-              <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
-              <div class="background-overlay"></div>
-
-              <div class="hover position-absolute w-100 h-100 p-3">
-                <p>Lorem Ipsum</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
-                <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
+            <div>
+              <div class="item position-relative animate-to-top">
+                <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
+                <div class="background-overlay"></div>
+  
+                <div class="hover position-absolute w-100 h-100 p-3">
+                  <p>Lorem Ipsum</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
+                  <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
+                </div>
+  
+                <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
+                  <h3 class="mb-0">Lorem Ipsum</h3>
+                </div>
               </div>
-
-              <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
-                <h3 class="mb-0">Lorem Ipsum</h3>
+            </div>
+            <div>
+              <div class="item position-relative animate-to-top">
+                <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
+                <div class="background-overlay"></div>
+  
+                <div class="hover position-absolute w-100 h-100 p-3">
+                  <p>Lorem Ipsum</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
+                  <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
+                </div>
+  
+                <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
+                  <h3 class="mb-0">Lorem Ipsum</h3>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="item position-relative animate-to-top">
+                <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
+                <div class="background-overlay"></div>
+  
+                <div class="hover position-absolute w-100 h-100 p-3">
+                  <p>Lorem Ipsum</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
+                  <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
+                </div>
+  
+                <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
+                  <h3 class="mb-0">Lorem Ipsum</h3>
+                </div>
               </div>
             </div>
 
@@ -85,14 +119,18 @@
     </div>
   </main>
 
+  <!-- Typescript + Webpack -->
+  <script src="./renderer.js"></script>
+
   <!-- Javascript -->
   <script src="../node_modules/flexmasonry/dist/flexmasonry.js"></script>
-  <script src="./assets/js/layout.js"></script>
-
-  <!-- Typescript + webpack -->
-  <script src="./assets/js/animation.js"></script>
-
-  <!-- Typescript -->
-  <script src="./renderer.js"></script>
+  <script>
+    window.onload = () => {
+      FlexMasonry.init('.grid', {
+        responsive: false,
+        numCols: 3
+      });
+    }
+  </script>
 </body>
 </html>
