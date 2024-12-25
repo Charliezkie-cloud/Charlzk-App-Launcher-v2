@@ -102,6 +102,30 @@ const onlineGamesButton = document.getElementById("onlineGamesButton");
 const offlineGamesButton = document.getElementById("offlineGamesButton");
 const appsButton = document.getElementById("appsButton");
 
+const search = document.getElementById("search") as HTMLInputElement;
+if (search) {
+  search.oninput = () => {
+    const inners = document.getElementsByClassName("inner");
+    for (const inner of inners) {
+      const title = inner.getElementsByClassName("item-title")[0].innerHTML.toLowerCase();
+      if (title && title.includes(search.value.toLowerCase())) {
+        inner.classList.replace("d-none", "d-block");
+      } else {
+        inner.classList.replace("d-block", "d-none");
+      }
+    }
+  };
+}
+
+function refreshInner() {
+  const inners = document.getElementsByClassName("inner");
+  for (const inner of inners) {
+    if (inner.classList.contains("d-none")) {
+      inner.classList.replace("d-none", "d-block");
+    }
+  }
+}
+
 if (
   onlineGamesButton &&
   offlineGamesButton &&
@@ -111,6 +135,8 @@ if (
   appsContainer
 ) {
   onlineGamesButton.onclick = () => {
+    refreshInner();
+
     onlineGamesContainer.classList.replace("d-none", "d-block");
 
     offlineGamesContainer.classList.replace("d-block", "d-none");
@@ -127,6 +153,8 @@ if (
   }
 
   offlineGamesButton.onclick = () => {
+    refreshInner();
+
     onlineGamesContainer.classList.replace("d-block", "d-none");
 
     offlineGamesContainer.classList.replace("d-none", "d-block");
@@ -144,6 +172,8 @@ if (
   }
 
   appsButton.onclick = () => {
+    refreshInner();
+
     onlineGamesContainer.classList.replace("d-block", "d-none");
     offlineGamesContainer.classList.replace("d-block", "d-none");
 
@@ -182,21 +212,6 @@ if (manageAppsForm) {
 
     window.electron.saveChanges(JSON.stringify(newData, null, 4));
   });
-}
-
-const search = document.getElementById("search") as HTMLInputElement;
-if (search) {
-  search.oninput = () => {
-    const inners = document.getElementsByClassName("inner");
-    for (const inner of inners) {
-      const title = inner.getElementsByClassName("item-title")[0].innerHTML.toLowerCase();
-      if (title && title.includes(search.value.toLowerCase())) {
-        inner.classList.replace("d-none", "d-block");
-      } else {
-        inner.classList.replace("d-block", "d-none");
-      }
-    }
-  };
 }
 
 function addToOnlineGames(name: string, description: string, shortcut: string, banner: string) {

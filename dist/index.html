@@ -15,7 +15,7 @@
         </a>
         
         <form class="needs-validation col-5 d-flex justify-content-center animate-to-bottom" novalidate>
-          <input type="text" id="search" class="form-control" placeholder="Search game">
+          <input type="text" id="search" class="form-control" placeholder="Search Game or App">
         </form>
 
         <ul class="navbar-nav d-flex flex-row gap-4 col justify-content-end animate-to-bottom">
@@ -50,12 +50,10 @@
             <button type="button" class="btn btn-primary px-5" onclick="changeIcon(4)">Small</button>
             <button type="button" class="btn btn-primary px-5" onclick="changeIcon(3)">Large</button>
           </div>
-
           <p class="mb-3 fw-semibold">Apps Configuration</p>
           <div class="mb-3">
             <button type="button" class="btn btn-primary px-5" data-bs-target="#manageAppsModal" data-bs-toggle="modal">Open</button>
           </div>
-
           <p class="mb-3 fw-semibold">Made by Charles Henry Tinoy</p>
           <div class="d-flex flex-row gap-3 mb-3">
             <a class="text-decoration-none" href="#" onclick="App.openLink('https://www.facebook.com/Charlzk05/')">
@@ -84,16 +82,20 @@
             </a>
           </div>
         </div>
+        <div class="modal-footer">
+          <small class="opacity-50 fw-light">&copy; 2025 Charlzk App Launcher</small>
+        </div>
       </div>
     </div>
   </div>
-
+  
+  <!-- Manage app modal -->
   <div class="modal modal-xl fade" data-bs-backdrop="static" data-bs-keyboard="false" id="manageAppsModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5">Manage Apps</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#settingsModal" data-bs-toggle="modal"></button>
         </div>
         <div class="modal-body">
           <form id="manageAppsForm" class="needs-validation" novalidate>
@@ -107,7 +109,7 @@
                   <th scope="col">Category</th>
                 </tr>
               </thead>
-  
+            
               <tbody id="manageAppsTable">
                 <!-- <tr>
                   <th scope="row">
@@ -139,7 +141,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary px-5" form="manageAppsForm">Save Changes</button>
+          <button type="submit" class="btn btn-primary px-5" form="manageAppsForm" data-bs-dismiss="modal" data-bs-target="#settingsModal" data-bs-toggle="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -216,15 +218,25 @@
         numCols: numCols === null ? 3 : numCols
       });
 
+      const search = document.getElementById("search");
+      search.addEventListener("input", () => {
+        FlexMasonry.refresh(document.getElementById("onlineGamesList"));
+        FlexMasonry.refresh(document.getElementById("offlineGamesList"));
+        FlexMasonry.refresh(document.getElementById("appsList"));
+      });
+
       document.getElementById("onlineGamesButton").addEventListener("click", () => {
+        search.value = "";
         FlexMasonry.refresh(document.getElementById("onlineGamesList"));
       });
 
       document.getElementById("offlineGamesButton").addEventListener("click", () => {
+        search.value = "";
         FlexMasonry.refresh(document.getElementById("offlineGamesList"));
       });
 
       document.getElementById("appsButton").addEventListener("click", () => {
+        search.value = "";
         FlexMasonry.refresh(document.getElementById("appsList"));
       });
       

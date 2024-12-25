@@ -47,7 +47,7 @@ const createWindow = () => {
       );
 
       for (const file of files) {
-        if (!(removeDuplicates.some(({ shortcut }) => shortcut === file))) {
+        if (!(removeDuplicates.some(({ shortcut }) => shortcut === file)) && file.includes(".lnk")) {
           newData.push({
             "name": file.split(".")[0],
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
@@ -118,6 +118,20 @@ const createWindow = () => {
   ipcMain.on("fromRenderer:saveChanges", async (event, newValue: string) => {
     try {
       await writeFile(path.join(__dirname, "apps.config.json"), newValue, { encoding: "utf-8" });
+      
+      const result = await dialog.showMessageBox(mainWindow, {
+        title: "Restart Needed",
+        message: "Would you like to restart the app now to apply the changes?",
+        buttons: ["Yes", "No"],
+        defaultId: 1,
+        type: "question"
+      });
+
+      switch (result.response) {
+        case 0:
+          mainWindow.webContents.reloadIgnoringCache();
+          break;
+      }
     } catch (error) {
       dialog.showErrorBox("Error", (error as Error).message);
     }

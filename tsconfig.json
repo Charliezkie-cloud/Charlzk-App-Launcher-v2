@@ -112,7 +112,7 @@
   },
   "include": [
     "./src/index.ts",
-    "./src/preload.ts",
-],
+    "./src/preload.ts"
+  ],
   "exclude": ["./node_modules"]
 }
