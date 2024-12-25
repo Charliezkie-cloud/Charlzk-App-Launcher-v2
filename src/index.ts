@@ -8,8 +8,6 @@ if (started) {
   app.quit();
 }
 
-const { getAppPath } = app;
-
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1600,
@@ -17,24 +15,24 @@ const createWindow = () => {
     minWidth: 1200,
     minHeight: 700,
     webPreferences: {
-      preload: path.join(getAppPath(), 'preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
-  mainWindow.loadFile(path.join(getAppPath(), 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   mainWindow.webContents.openDevTools();
 
   ipcMain.on("fromRenderer:onLoad", async (event) => {
     try {
-      const backgrounds = await readdir(path.join(getAppPath(), "assets", "img", "backgrounds"));
+      const backgrounds = await readdir(path.join(__dirname, "assets", "img", "backgrounds"));
       const selectedBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
       event.reply("fromMain:background", selectedBackground);
 
-      const jsonFile = await readFile(path.join(getAppPath(), "apps.config.json"), { encoding: "utf-8" });
+      const jsonFile = await readFile(path.join(__dirname, "apps.config.json"), { encoding: "utf-8" });
       const jsonData: App[] = JSON.parse(jsonFile);
-      const files = await readdir(path.join(getAppPath(), "shortcuts"));
+      const files = await readdir(path.join(__dirname, "shortcuts"));
       const newData: App[] = [];
 
       for (const file of files) {
@@ -60,17 +58,17 @@ const createWindow = () => {
         }
       }
 
-      const banners = await readdir(path.join(getAppPath(), "assets", "img", "banners"));
+      const banners = await readdir(path.join(__dirname, "assets", "img", "banners"));
 
       for (const banner of banners) {
         if (!newData.some((data) => data.banner === banner)) {
-          await unlink(path.join(getAppPath(), "assets", "img", "banners", banner));
+          await unlink(path.join(__dirname, "assets", "img", "banners", banner));
         }
       }
 
       const newDataString = JSON.stringify(newData, null, 4);
 
-      await writeFile(path.join(getAppPath(), "apps.config.json"), newDataString);
+      await writeFile(path.join(__dirname, "apps.config.json"), newDataString);
 
       event.reply("fromMain:apps", newData);
     } catch (error) {
@@ -79,7 +77,7 @@ const createWindow = () => {
   });
 
   ipcMain.on("fromRenderer:openApp", (event, name:string, shortcut: string) => {
-    const shortcutPath = path.join(getAppPath(), "shortcuts", shortcut);
+    const shortcutPath = path.join(__dirname, "shortcuts", shortcut);
     exec(`start "${name}" "${shortcutPath}"`, (err) => {
       if (err) {
         return dialog.showErrorBox("Error", err.message);
@@ -100,7 +98,7 @@ const createWindow = () => {
       });
       if (result.canceled) { return; }
 
-      const jsonFile = await readFile(path.join(getAppPath(), "apps.config.json"), { encoding: "utf-8" });
+      const jsonFile = await readFile(path.join(__dirname, "apps.config.json"), { encoding: "utf-8" });
       const jsonData: App[] = JSON.parse(jsonFile);
 
       const item = jsonData.find(value => value.shortcut === shortcut);
@@ -108,8 +106,8 @@ const createWindow = () => {
         item.banner = path.basename(result.filePaths[0]);
       }
 
-      await rename(result.filePaths[0], path.join(getAppPath(), "assets", "img", "banners", path.basename(result.filePaths[0])));
-      await writeFile(path.join(getAppPath(), "apps.config.json"), JSON.stringify(jsonData, null, 4), { encoding: "utf-8" });
+      await rename(result.filePaths[0], path.join(__dirname, "assets", "img", "banners", path.basename(result.filePaths[0])));
+      await writeFile(path.join(__dirname, "apps.config.json"), JSON.stringify(jsonData, null, 4), { encoding: "utf-8" });
 
       event.reply("fromMain:selectedBanner", path.basename(result.filePaths[0]), shortcut);
     } catch (error) {
@@ -119,7 +117,7 @@ const createWindow = () => {
 
   ipcMain.on("fromRenderer:saveChanges", async (event, newValue: string) => {
     try {
-      await writeFile(path.join(getAppPath(), "apps.config.json"), newValue, { encoding: "utf-8" });
+      await writeFile(path.join(__dirname, "apps.config.json"), newValue, { encoding: "utf-8" });
     } catch (error) {
       dialog.showErrorBox("Error", (error as Error).message);
     }
