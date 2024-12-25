@@ -1,8 +1,22 @@
 [
     {
-        "name": "3uTools(32bit)",
-        "description": "3uTools Lorem",
+        "name": "3uTools(32bit) YESSS",
+        "description": "HELO WORLD",
         "shortcut": "3uTools(32bit).lnk",
+        "banner": "Background-10.png",
+        "category": "Apps"
+    },
+    {
+        "name": "ACLib",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "ACLib",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Adobe After Effects 2023",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Adobe After Effects 2023.lnk",
         "banner": "Placeholder.jpg",
         "category": "Apps"
     },
@@ -10,6 +24,20 @@
         "name": "Adobe Media Encoder 2023",
         "description": "Adobe Media Encoder 2023 WAHAHAHA",
         "shortcut": "Adobe Media Encoder 2023.lnk",
+        "banner": "Background-3.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Adobe Photoshop 2023",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Adobe Photoshop 2023.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Canva",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Canva.lnk",
         "banner": "Placeholder.jpg",
         "category": "Apps"
     },
@@ -17,7 +45,161 @@
         "name": "CapCut",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
         "shortcut": "CapCut.lnk",
+        "banner": "466873437_589182967142398_1656464668303377601_n.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Crossfire PH",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Crossfire PH.lnk",
         "banner": "Placeholder.jpg",
-        "category": "None"
+        "category": "OnlineGames"
+    },
+    {
+        "name": "CrossOver",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "CrossOver.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Discord",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Discord.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Driver Easy",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Driver Easy.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Excel",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Excel.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Figma",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Figma.exe",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Geometry Dash",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Geometry Dash.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "OfflineGames"
+    },
+    {
+        "name": "Git Bash",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Git Bash.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "GitHub Desktop",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "GitHub Desktop.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Google Chrome",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Google Chrome.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Google Cloud SDK Shell",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Google Cloud SDK Shell.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Logitech G HUB",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Logitech G HUB.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "OBS Studio",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "OBS Studio.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Opera GX Browser",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Opera GX Browser.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "PowerPoint",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "PowerPoint.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Roblox Player",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Roblox Player.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "OnlineGames"
+    },
+    {
+        "name": "Roblox Studio",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Roblox Studio.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "OnlineGames"
+    },
+    {
+        "name": "TLauncher",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "TLauncher.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "OnlineGames"
+    },
+    {
+        "name": "Touch",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Touch.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "OnlineGames"
+    },
+    {
+        "name": "uTorrent Web",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "uTorrent Web.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Visual Studio Code",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Visual Studio Code.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
+    },
+    {
+        "name": "Word",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "shortcut": "Word.lnk",
+        "banner": "Placeholder.jpg",
+        "category": "Apps"
     }
 ]

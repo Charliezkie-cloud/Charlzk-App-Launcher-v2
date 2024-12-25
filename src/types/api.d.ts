@@ -9,7 +9,8 @@ declare global {
       background: (callback: (name: string) => void) => void;
       openLink: (url: string) => void;
       selectBanner: (shortcut: string) => void;
-      selectedBanner: (callback: (filepath: string) => void) => void;
+      selectedBanner: (callback: (banner: string, shortcut: string) => void) => void;
+      saveChanges: (newValue: string) => void;
     }
   }
 }

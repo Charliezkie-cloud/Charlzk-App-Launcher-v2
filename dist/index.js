@@ -57,6 +57,12 @@ const createWindow = () => {
                     });
                 }
             }
+            const banners = yield (0, promises_1.readdir)(node_path_1.default.join(__dirname, "assets", "img", "banners"));
+            for (const banner of banners) {
+                if (!newData.some((data) => data.banner === banner)) {
+                    yield (0, promises_1.unlink)(node_path_1.default.join(__dirname, "assets", "img", "banners", banner));
+                }
+            }
             const newDataString = JSON.stringify(newData, null, 4);
             yield (0, promises_1.writeFile)(node_path_1.default.join(__dirname, "apps.config.json"), newDataString);
             event.reply("fromMain:apps", newData);
@@ -90,10 +96,19 @@ const createWindow = () => {
             const jsonData = JSON.parse(jsonFile);
             const item = jsonData.find(value => value.shortcut === shortcut);
             if (item) {
-                item.banner = "HELO WORLD!";
+                item.banner = node_path_1.default.basename(result.filePaths[0]);
             }
-            console.log(JSON.stringify(jsonData, null, 4));
-            // event.reply("fromMain:selectedBanner", result.filePaths[0]);
+            yield (0, promises_1.rename)(result.filePaths[0], node_path_1.default.join(__dirname, "assets", "img", "banners", node_path_1.default.basename(result.filePaths[0])));
+            yield (0, promises_1.writeFile)(node_path_1.default.join(__dirname, "apps.config.json"), JSON.stringify(jsonData, null, 4), { encoding: "utf-8" });
+            event.reply("fromMain:selectedBanner", node_path_1.default.basename(result.filePaths[0]), shortcut);
+        }
+        catch (error) {
+            electron_1.dialog.showErrorBox("Error", error.message);
+        }
+    }));
+    electron_1.ipcMain.on("fromRenderer:saveChanges", (event, newValue) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            yield (0, promises_1.writeFile)(node_path_1.default.join(__dirname, "apps.config.json"), newValue, { encoding: "utf-8" });
         }
         catch (error) {
             electron_1.dialog.showErrorBox("Error", error.message);

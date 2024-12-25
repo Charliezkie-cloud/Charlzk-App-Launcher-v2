@@ -128,7 +128,9 @@ main {
     backdrop-filter: blur(5px);
   }
 
-  #onlineGames {
+  #onlineGames,
+  #offlineGames,
+  #apps {
     height: 90vh;
     overflow-y: auto;
   }

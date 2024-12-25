@@ -1,7 +1,7 @@
 import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { readdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
 import { exec } from 'node:child_process';
 
 if (started) {
@@ -58,6 +58,14 @@ const createWindow = () => {
         }
       }
 
+      const banners = await readdir(path.join(__dirname, "assets", "img", "banners"));
+
+      for (const banner of banners) {
+        if (!newData.some((data) => data.banner === banner)) {
+          await unlink(path.join(__dirname, "assets", "img", "banners", banner));
+        }
+      }
+
       const newDataString = JSON.stringify(newData, null, 4);
 
       await writeFile(path.join(__dirname, "apps.config.json"), newDataString);
@@ -95,12 +103,21 @@ const createWindow = () => {
 
       const item = jsonData.find(value => value.shortcut === shortcut);
       if (item) {
-        item.banner = "HELO WORLD!";
+        item.banner = path.basename(result.filePaths[0]);
       }
 
-      console.log(JSON.stringify(jsonData, null, 4));
+      await rename(result.filePaths[0], path.join(__dirname, "assets", "img", "banners", path.basename(result.filePaths[0])));
+      await writeFile(path.join(__dirname, "apps.config.json"), JSON.stringify(jsonData, null, 4), { encoding: "utf-8" });
 
-      // event.reply("fromMain:selectedBanner", result.filePaths[0]);
+      event.reply("fromMain:selectedBanner", path.basename(result.filePaths[0]), shortcut);
+    } catch (error) {
+      dialog.showErrorBox("Error", (error as Error).message);
+    }
+  });
+
+  ipcMain.on("fromRenderer:saveChanges", async (event, newValue: string) => {
+    try {
+      await writeFile(path.join(__dirname, "apps.config.json"), newValue, { encoding: "utf-8" });
     } catch (error) {
       dialog.showErrorBox("Error", (error as Error).message);
     }

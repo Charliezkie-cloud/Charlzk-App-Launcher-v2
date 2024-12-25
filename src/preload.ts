@@ -26,14 +26,18 @@ function openLink(url: string) {
   ipcRenderer.send("fromRenderer:openLink", url);
 }
 
-function selectBanner() {
-  ipcRenderer.send("fromRenderer:selectBanner")
+function selectBanner(shortcut: string) {
+  ipcRenderer.send("fromRenderer:selectBanner", shortcut)
 }
 
-function selectedBanner(callback: (filepath: string) => void) {
-  ipcRenderer.on("fromMain:selectedBanner", (event, filepath: string) => {
-    callback(filepath);
+function selectedBanner(callback: (banner: string, shortcut: string) => void) {
+  ipcRenderer.on("fromMain:selectedBanner", (event, banner: string, shortcut: string) => {
+    callback(banner, shortcut);
   });
+}
+
+function saveChanges(newValue: string) {
+  ipcRenderer.send("fromRenderer:saveChanges", newValue);
 }
 
 
@@ -44,5 +48,6 @@ contextBridge.exposeInMainWorld("electron", {
   background,
   openLink,
   selectBanner,
-  selectedBanner
+  selectedBanner,
+  saveChanges,
 });

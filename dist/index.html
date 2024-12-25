@@ -15,7 +15,7 @@
         </a>
         
         <form class="needs-validation col-5 d-flex justify-content-center animate-to-bottom" novalidate>
-          <input type="text" name="search" class="form-control" placeholder="Search game">
+          <input type="text" id="search" class="form-control" placeholder="Search game">
         </form>
 
         <ul class="navbar-nav d-flex flex-row gap-4 col justify-content-end animate-to-bottom">
@@ -53,7 +53,7 @@
 
           <p class="mb-3 fw-semibold">Apps Configuration</p>
           <div class="mb-3">
-            <button type="button" class="btn btn-primary" data-bs-target="#manageAppsModal" data-bs-toggle="modal">Open</button>
+            <button type="button" class="btn btn-primary px-5" data-bs-target="#manageAppsModal" data-bs-toggle="modal">Open</button>
           </div>
 
           <p class="mb-3 fw-semibold">Made by Charles Henry Tinoy</p>
@@ -109,7 +109,6 @@
               </thead>
   
               <tbody id="manageAppsTable">
-
                 <!-- <tr>
                   <th scope="row">
                     <input type="text" name="name" class="form-control" required>
@@ -135,7 +134,6 @@
                     </select>
                   </th>
                 </tr> -->
-
               </tbody>
             </table>
           </form>
@@ -173,7 +171,6 @@
         <div id="onlineGames" class="p-4 d-block">
           <h2 class="mb-3 animate-onlineGames">Online Games</h2>
           <div id="onlineGamesList" class="list grid">
-            
             <!-- <div class="item position-relative animate-to-top">
               <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
               <div class="background-overlay"></div>
@@ -188,7 +185,6 @@
                 <h3 class="mb-0">Lorem Ipsum</h3>
               </div>
             </div> -->
-
           </div>
         </div>
 
@@ -231,6 +227,8 @@
       document.getElementById("appsButton").addEventListener("click", () => {
         FlexMasonry.refresh(document.getElementById("appsList"));
       });
+      
+      initializeInner();
     }
 
     function changeIcon(size) {
@@ -240,8 +238,15 @@
       });
 
       FlexMasonry.refreshAll();
-
+      initializeInner();
       window.localStorage.setItem('numCols', size);
+    }
+
+    function initializeInner() {
+      const inners = document.getElementsByClassName("inner");
+      for (const inner of inners) {
+        inner.classList.add("d-block");
+      }
     }
   </script>
 </body>

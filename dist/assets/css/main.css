@@ -18874,7 +18874,9 @@ main .col-2 {
   background: rgba(22, 22, 22, 0.75);
   backdrop-filter: blur(5px);
 }
-main #onlineGames {
+main #onlineGames,
+main #offlineGames,
+main #apps {
   height: 90vh;
   overflow-y: auto;
 }

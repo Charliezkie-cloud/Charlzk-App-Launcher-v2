@@ -180,8 +180,23 @@ if (manageAppsForm) {
       } as App
     });
 
-    console.log(JSON.stringify(newData, null, 4));
+    window.electron.saveChanges(JSON.stringify(newData, null, 4));
   });
+}
+
+const search = document.getElementById("search") as HTMLInputElement;
+if (search) {
+  search.oninput = () => {
+    const inners = document.getElementsByClassName("inner");
+    for (const inner of inners) {
+      const title = inner.getElementsByClassName("item-title")[0].innerHTML.toLowerCase();
+      if (title && title.includes(search.value.toLowerCase())) {
+        inner.classList.replace("d-none", "d-block");
+      } else {
+        inner.classList.replace("d-block", "d-none");
+      }
+    }
+  };
 }
 
 function addToOnlineGames(name: string, description: string, shortcut: string, banner: string) {
@@ -223,7 +238,7 @@ function addToOnlineGames(name: string, description: string, shortcut: string, b
     const defaultDiv = document.createElement('div');
     defaultDiv.classList.add('default', 'position-absolute', 'start-0', 'bottom-0', 'end-0', 'px-3', 'py-2');
     const h4 = document.createElement('h4');
-    h4.classList.add('mb-0');
+    h4.classList.add('mb-0', 'item-title');
     h4.textContent = name;
 
     defaultDiv.appendChild(h4);
@@ -281,7 +296,7 @@ function addToOfflineGames(name: string, description: string, shortcut: string, 
     const defaultDiv = document.createElement('div');
     defaultDiv.classList.add('default', 'position-absolute', 'start-0', 'bottom-0', 'end-0', 'px-3', 'py-2');
     const h4 = document.createElement('h4');
-    h4.classList.add('mb-0');
+    h4.classList.add('mb-0', 'item-title');
     h4.textContent = name;
 
     defaultDiv.appendChild(h4);
@@ -339,7 +354,7 @@ function addToApps(name: string, description: string, shortcut: string, banner: 
     const defaultDiv = document.createElement('div');
     defaultDiv.classList.add('default', 'position-absolute', 'start-0', 'bottom-0', 'end-0', 'px-3', 'py-2');
     const h4 = document.createElement('h4');
-    h4.classList.add('mb-0');
+    h4.classList.add('mb-0', 'item-title');
     h4.textContent = name;
 
     defaultDiv.appendChild(h4);
@@ -395,36 +410,30 @@ function createTableRow(name: string, description: string, shortcut: string, ban
     shortcutTh.appendChild(shortcutInput);
 
     const bannerTh = document.createElement('th');
-    const bannerHiddenInput = document.createElement('input');
-    bannerHiddenInput.type = 'text';
-    bannerHiddenInput.name = 'banner';
-    bannerHiddenInput.value = banner;
-    bannerHiddenInput.required = true;
-    bannerHiddenInput.hidden = true; // Hidden input
-    bannerTh.appendChild(bannerHiddenInput);
+    const bannerInput = document.createElement('input');
+    bannerInput.classList.add('form-control', "form-control-sm");
+    bannerInput.type = 'text';
+    bannerInput.name = 'banner';
+    bannerInput.value = banner;
+    bannerInput.required = true;
+    bannerInput.readOnly = true;
+    bannerInput.setAttribute("data-bs-toggle", "tooltip");
+    bannerInput.setAttribute("data-bs-title", banner);
+    const bannerInputTooltip = new bootstrap.Tooltip(bannerInput);
+    bannerInput.style.cursor = "pointer";
 
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.classList.add('form-control', "form-control-sm");
-    fileInput.accept = "image/*";
-    fileInput.setAttribute("data-bs-toggle", "tooltip");
-    fileInput.setAttribute("data-bs-title", banner);
-
-    const fileInputTooltip = new bootstrap.Tooltip(fileInput);
-
-    fileInput.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
+    bannerInput.onclick = () => {
       window.electron.selectBanner(shortcut);
     }
 
-    window.electron.selectedBanner((filepath) => {
-      bannerHiddenInput.value = filepath;
-      fileInputTooltip.setContent({ ".tooltip-inner": filepath });
+    window.electron.selectedBanner((selectedBanner, selectedShortcut) => {
+      if (selectedShortcut === shortcut) {
+        bannerInput.value = selectedBanner;
+        bannerInputTooltip.setContent({ ".tooltip-inner": selectedBanner });
+      }
     });
 
-    bannerTh.appendChild(fileInput);
+    bannerTh.appendChild(bannerInput);
 
     const categoryTh = document.createElement('th');
     categoryTh.classList.add('position-relative');
