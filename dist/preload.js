@@ -12,8 +12,28 @@ function apps(callback) {
 function openApp(name, shortcut) {
     electron_1.ipcRenderer.send("fromRenderer:openApp", name, shortcut);
 }
+function background(callback) {
+    electron_1.ipcRenderer.on("fromMain:background", (event, name) => {
+        callback(name);
+    });
+}
+function openLink(url) {
+    electron_1.ipcRenderer.send("fromRenderer:openLink", url);
+}
+function selectBanner() {
+    electron_1.ipcRenderer.send("fromRenderer:selectBanner");
+}
+function selectedBanner(callback) {
+    electron_1.ipcRenderer.on("fromMain:selectedBanner", (event, filepath) => {
+        callback(filepath);
+    });
+}
 electron_1.contextBridge.exposeInMainWorld("electron", {
     onLoad,
     apps,
-    openApp
+    openApp,
+    background,
+    openLink,
+    selectBanner,
+    selectedBanner
 });

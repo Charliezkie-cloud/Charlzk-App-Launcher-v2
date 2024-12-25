@@ -1,65 +1,23 @@
 [
     {
         "name": "3uTools(32bit)",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "description": "3uTools Lorem",
         "shortcut": "3uTools(32bit).lnk",
         "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
+        "category": "Apps"
     },
     {
         "name": "Adobe Media Encoder 2023",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
+        "description": "Adobe Media Encoder 2023 WAHAHAHA",
         "shortcut": "Adobe Media Encoder 2023.lnk",
         "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
+        "category": "Apps"
     },
     {
         "name": "CapCut",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
         "shortcut": "CapCut.lnk",
         "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
-    },
-    {
-        "name": "Google Cloud SDK Shell",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
-        "shortcut": "Google Cloud SDK Shell.lnk",
-        "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
-    },
-    {
-        "name": "Logitech G HUB",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
-        "shortcut": "Logitech G HUB.lnk",
-        "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
-    },
-    {
-        "name": "Roblox Player",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
-        "shortcut": "Roblox Player.lnk",
-        "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
-    },
-    {
-        "name": "Roblox Studio",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
-        "shortcut": "Roblox Studio.lnk",
-        "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
-    },
-    {
-        "name": "Touch",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
-        "shortcut": "Touch.lnk",
-        "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
-    },
-    {
-        "name": "uTorrent Web",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
-        "shortcut": "uTorrent Web.lnk",
-        "banner": "Placeholder.jpg",
-        "category": "OnlineGames"
+        "category": "None"
     }
 ]

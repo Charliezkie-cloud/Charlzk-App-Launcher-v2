@@ -34,6 +34,9 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools();
     electron_1.ipcMain.on("fromRenderer:onLoad", (event) => __awaiter(void 0, void 0, void 0, function* () {
         try {
+            const backgrounds = yield (0, promises_1.readdir)(node_path_1.default.join(__dirname, "assets", "img", "backgrounds"));
+            const selectedBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            event.reply("fromMain:background", selectedBackground);
             const jsonFile = yield (0, promises_1.readFile)(node_path_1.default.join(__dirname, "apps.config.json"), { encoding: "utf-8" });
             const jsonData = JSON.parse(jsonFile);
             const files = yield (0, promises_1.readdir)(node_path_1.default.join(__dirname, "shortcuts"));
@@ -50,7 +53,7 @@ const createWindow = () => {
                         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In faucibus nulla vel ligula aliquet, vel suscipit metus mollis. Nullam facilisis libero vehicula nibh placerat finibus.",
                         "shortcut": file,
                         "banner": "Placeholder.jpg",
-                        "category": "OnlineGames"
+                        "category": "None"
                     });
                 }
             }
@@ -59,7 +62,7 @@ const createWindow = () => {
             event.reply("fromMain:apps", newData);
         }
         catch (error) {
-            console.error(error);
+            electron_1.dialog.showErrorBox("Error", error.message);
         }
     }));
     electron_1.ipcMain.on("fromRenderer:openApp", (event, name, shortcut) => {
@@ -70,6 +73,32 @@ const createWindow = () => {
             }
         });
     });
+    electron_1.ipcMain.on("fromRenderer:openLink", (event, url) => {
+        electron_1.shell.openExternal(url);
+    });
+    electron_1.ipcMain.on("fromRenderer:selectBanner", (event, shortcut) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const result = yield electron_1.dialog.showOpenDialog(mainWindow, {
+                filters: [
+                    { name: 'Images', extensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff'] }
+                ]
+            });
+            if (result.canceled) {
+                return;
+            }
+            const jsonFile = yield (0, promises_1.readFile)(node_path_1.default.join(__dirname, "apps.config.json"), { encoding: "utf-8" });
+            const jsonData = JSON.parse(jsonFile);
+            const item = jsonData.find(value => value.shortcut === shortcut);
+            if (item) {
+                item.banner = "HELO WORLD!";
+            }
+            console.log(JSON.stringify(jsonData, null, 4));
+            // event.reply("fromMain:selectedBanner", result.filePaths[0]);
+        }
+        catch (error) {
+            electron_1.dialog.showErrorBox("Error", error.message);
+        }
+    }));
 };
 electron_1.app.whenReady().then(() => {
     createWindow();

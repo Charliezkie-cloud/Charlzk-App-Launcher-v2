@@ -26,7 +26,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-bs-target="#settingsModal" data-bs-toggle="modal">
               <i class="bi bi-gear-fill me-2"></i>
               Settings
             </a>
@@ -36,21 +36,132 @@
     </nav>
   </header>
 
+  <!-- Settings modal -->
+  <div class="modal modal-lg fade" data-bs-backdrop="static" data-bs-keyboard="false" id="settingsModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Settings</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-3 fw-semibold">Icon Size</p>
+          <div class="d-flex flex-row gap-2 mb-3">
+            <button type="button" class="btn btn-primary px-5" onclick="changeIcon(4)">Small</button>
+            <button type="button" class="btn btn-primary px-5" onclick="changeIcon(3)">Large</button>
+          </div>
+
+          <p class="mb-3 fw-semibold">Apps Configuration</p>
+          <div class="mb-3">
+            <button type="button" class="btn btn-primary" data-bs-target="#manageAppsModal" data-bs-toggle="modal">Open</button>
+          </div>
+
+          <p class="mb-3 fw-semibold">Made by Charles Henry Tinoy</p>
+          <div class="d-flex flex-row gap-3 mb-3">
+            <a class="text-decoration-none" href="#" onclick="App.openLink('https://www.facebook.com/Charlzk05/')">
+              <i class="bi bi-facebook me-1"></i>
+              Facebook
+            </a>
+            <a class="text-decoration-none" href="#" onclick="App.openLink('https://www.instagram.com/charlzk_/')">
+              <i class="bi bi-instagram me-1"></i>
+              Instagram
+            </a>
+          </div>
+          <div class="d-flex flex-row gap-3 mb-3">
+            <a class="text-decoration-none" href="#" onclick="App.openLink('https://x.com/@charliezkierblx')">
+              <i class="bi bi-twitter-x me-1"></i>
+              Twitter
+            </a>
+            <a class="text-decoration-none" href="#" onclick="App.openLink('https://github.com/Charliezkie-cloud')">
+              <i class="bi bi-github me-1"></i>
+              Github
+            </a>
+          </div>
+          <div class="mb-3">
+            <a class="text-decoration-none" href="#" onclick="App.openLink('https://github.com/Charliezkie-cloud/Charlzk-App-Launcher-v2')">
+              <i class="bi bi-github me-1"></i>
+              Charlzk App Launcher v2 (Source Code)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-xl fade" data-bs-backdrop="static" data-bs-keyboard="false" id="manageAppsModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Manage Apps</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="manageAppsForm" class="needs-validation" novalidate>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Shortcut</th>
+                  <th scope="col">Banner</th>
+                  <th scope="col">Category</th>
+                </tr>
+              </thead>
+  
+              <tbody id="manageAppsTable">
+
+                <!-- <tr>
+                  <th scope="row">
+                    <input type="text" name="name" class="form-control" required>
+                  </th>
+                  <th>
+                    <textarea name="description" class="form-control" style="height: 17px;" required></textarea>
+                  </th>
+                  <th>
+                    <input type="text" name="shortcut" class="form-control" readonly>
+                  </th>
+                  <th>
+                    <input type="text" name="banner" required hidden>
+                    <input type="file" class="form-control">
+                  </th>
+                  <th class="position-relative">
+                    <span
+                      class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+                    <select class="form-select" name="category">
+                      <option selected value="None">None</option>
+                      <option value="OnlineGames">Online Games</option>
+                      <option value="OfflineGames">Offline Games</option>
+                      <option value="Apps">Apps</option>
+                    </select>
+                  </th>
+                </tr> -->
+
+              </tbody>
+            </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary px-5" form="manageAppsForm">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main class="position-fixed h-100 w-100 bg-body">
     <div class="row h-100">
       <div class="col-2 pe-0 animate-to-right">
         <div class="p-4 d-flex flex-column align-items-center gap-4">
           <h1 class="border-bottom w-100 text-center pb-4 animate-to-right">Menu</h1>
           <div class="d-flex flex-column align-items-center gap-3 w-100">
-            <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row">
+            <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row" id="onlineGamesButton">
               <i class="bi bi-steam"></i>
               <span class="text-center w-100">Online Games</span>
             </button>
-            <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row">
+            <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row" id="offlineGamesButton">
               <i class="bi bi-wifi-off"></i>
               <span class="text-center w-100">Offline Games</span>
             </button>
-            <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row">
+            <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row" id="appsButton">
               <i class="bi bi-app text-center"></i>
               <span class="text-center w-100">Apps</span>
             </button>
@@ -59,60 +170,36 @@
       </div>
       <div class="col ps-0">
 
-        <div id="onlineGames" class="p-4">
-          <h2 class="mb-3 animate-to-top">Online Games</h2>
+        <div id="onlineGames" class="p-4 d-block">
+          <h2 class="mb-3 animate-onlineGames">Online Games</h2>
           <div id="onlineGamesList" class="list grid">
             
-            <div>
-              <div class="item position-relative animate-to-top">
-                <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
-                <div class="background-overlay"></div>
-  
-                <div class="hover position-absolute w-100 h-100 p-3">
-                  <p>Lorem Ipsum</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
-                  <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
-                </div>
-  
-                <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
-                  <h3 class="mb-0">Lorem Ipsum</h3>
-                </div>
+            <!-- <div class="item position-relative animate-to-top">
+              <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
+              <div class="background-overlay"></div>
+
+              <div class="hover position-absolute w-100 h-100 p-3">
+                <p>Lorem Ipsum</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
+                <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
               </div>
-            </div>
-            <div>
-              <div class="item position-relative animate-to-top">
-                <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
-                <div class="background-overlay"></div>
-  
-                <div class="hover position-absolute w-100 h-100 p-3">
-                  <p>Lorem Ipsum</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
-                  <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
-                </div>
-  
-                <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
-                  <h3 class="mb-0">Lorem Ipsum</h3>
-                </div>
+
+              <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
+                <h3 class="mb-0">Lorem Ipsum</h3>
               </div>
-            </div>
-            <div>
-              <div class="item position-relative animate-to-top">
-                <img class="background position-absolute w-100 h-100" src="./assets/img/banners/crossfire.webp" alt="crossfire.webp">
-                <div class="background-overlay"></div>
-  
-                <div class="hover position-absolute w-100 h-100 p-3">
-                  <p>Lorem Ipsum</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu ante mi. Morbi quam nunc, molestie nec tortor nec, tincidunt gravida nisi. Fusce auctor nibh id libero pellentesque maximus.</p>
-                  <button type="button" class="btn btn-primary fw-semibold px-5 open-btn">Open</button>
-                </div>
-  
-                <div class="default position-absolute start-0 bottom-0 end-0 px-3 py-2">
-                  <h3 class="mb-0">Lorem Ipsum</h3>
-                </div>
-              </div>
-            </div>
+            </div> -->
 
           </div>
+        </div>
+
+        <div id="offlineGames" class="p-4 d-none">
+          <h2 class="mb-3 animate-offlineGames">Offline Games</h2>
+          <div id="offlineGamesList" class="list grid"></div>
+        </div>
+
+        <div id="apps" class="p-4 d-none">
+          <h2 class="mb-3 animate-apps">Apps</h2>
+          <div id="appsList" class="list grid"></div>
         </div>
         
       </div>
@@ -126,10 +213,35 @@
   <script src="../node_modules/flexmasonry/dist/flexmasonry.js"></script>
   <script>
     window.onload = () => {
+      const numCols = window.localStorage.getItem("numCols");
+
       FlexMasonry.init('.grid', {
         responsive: false,
-        numCols: 3
+        numCols: numCols === null ? 3 : numCols
       });
+
+      document.getElementById("onlineGamesButton").addEventListener("click", () => {
+        FlexMasonry.refresh(document.getElementById("onlineGamesList"));
+      });
+
+      document.getElementById("offlineGamesButton").addEventListener("click", () => {
+        FlexMasonry.refresh(document.getElementById("offlineGamesList"));
+      });
+
+      document.getElementById("appsButton").addEventListener("click", () => {
+        FlexMasonry.refresh(document.getElementById("appsList"));
+      });
+    }
+
+    function changeIcon(size) {
+      FlexMasonry.init('.grid', {
+        responsive: false,
+        numCols: size
+      });
+
+      FlexMasonry.refreshAll();
+
+      window.localStorage.setItem('numCols', size);
     }
   </script>
 </body>

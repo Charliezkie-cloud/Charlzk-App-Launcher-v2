@@ -18794,6 +18794,9 @@ progress {
     display: none !important;
   }
 }
+.animate-onlineGames,
+.animate-offlineGames,
+.animate-apps,
 .animate-to-top {
   position: relative;
   top: 150px;
@@ -18810,6 +18813,29 @@ progress {
   position: relative;
   left: -150px;
   opacity: 0%;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #373737 #191919;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #191919;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #373737;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 html, body {
@@ -18829,20 +18855,20 @@ header .navbar {
 }
 
 main {
-  background: url("../img/backgrounds/Background-1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -1;
 }
 main:before {
   content: "";
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(22, 22, 22, 0.25);
+  background-color: rgba(22, 22, 22, 0.5);
 }
 main .col-2 {
   background: rgba(22, 22, 22, 0.75);
@@ -18852,16 +18878,19 @@ main #onlineGames {
   height: 90vh;
   overflow-y: auto;
 }
-main .list .item {
+main .list .inner {
+  padding: 5px;
+}
+main .list .inner .item {
   height: 300px;
   width: auto;
 }
-main .list .item .background {
+main .list .inner .item .background {
   object-fit: cover;
   object-position: center;
   z-index: 0;
 }
-main .list .item .background-overlay {
+main .list .inner .item .background-overlay {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -18873,13 +18902,13 @@ main .list .item .background-overlay {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
   transition: all 0.5s cubic-bezier(0, 0.3, 0, 1);
 }
-main .list .item .hover {
+main .list .inner .item .hover {
   z-index: 2;
   overflow-y: auto;
   opacity: 0%;
   transition: opacity 0.5s cubic-bezier(0, 0.3, 0, 1);
 }
-main .list .item .hover .open-btn {
+main .list .inner .item .hover .open-btn {
   color: #323232;
   background: rgb(59, 211, 196);
   background: -moz-linear-gradient(0deg, rgb(59, 211, 196) 0%, rgb(38, 193, 148) 100%);
@@ -18888,30 +18917,30 @@ main .list .item .hover .open-btn {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3bd3c4",endColorstr="#26c194",GradientType=1);
   transition: all 0.5s ease-in-out;
 }
-main .list .item .hover .open-btn:hover {
+main .list .inner .item .hover .open-btn:hover {
   background: rgb(38, 130, 193);
   background: -moz-linear-gradient(0deg, rgb(38, 130, 193) 0%, rgb(59, 211, 196) 100%);
   background: -webkit-linear-gradient(0deg, rgb(38, 130, 193) 0%, rgb(59, 211, 196) 100%);
   background: linear-gradient(0deg, rgb(38, 130, 193) 0%, rgb(59, 211, 196) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2682c1",endColorstr="#3bd3c4",GradientType=1);
 }
-main .list .item .default {
+main .list .inner .item .default {
   z-index: 3;
   opacity: 100%;
   transition: opacity 0.25s cubic-bezier(0, 0.3, 0, 1);
 }
-main .list .item:hover .background-overlay {
+main .list .inner .item:hover .background-overlay {
   background: rgb(22, 22, 22);
   background: -moz-linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(22, 22, 22, 0.9) 100%);
   background: -webkit-linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(22, 22, 22, 0.9) 100%);
   background: linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(22, 22, 22, 0.9) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#161616",endColorstr="#161616",GradientType=1);
 }
-main .list .item:hover .hover {
+main .list .inner .item:hover .hover {
   z-index: 3;
   opacity: 100%;
 }
-main .list .item:hover .default {
+main .list .inner .item:hover .default {
   z-index: 2;
   opacity: 0%;
 }
