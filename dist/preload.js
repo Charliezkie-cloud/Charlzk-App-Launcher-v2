@@ -31,6 +31,9 @@ function selectedBanner(callback) {
 function saveChanges(newValue) {
     electron_1.ipcRenderer.send("fromRenderer:saveChanges", newValue);
 }
+function shortcutsFolder() {
+    electron_1.ipcRenderer.send("fromRenderer:shortcutsFolder");
+}
 electron_1.contextBridge.exposeInMainWorld("electron", {
     onLoad,
     apps,
@@ -40,4 +43,5 @@ electron_1.contextBridge.exposeInMainWorld("electron", {
     selectBanner,
     selectedBanner,
     saveChanges,
+    shortcutsFolder,
 });

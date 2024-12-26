@@ -214,6 +214,34 @@ if (manageAppsForm) {
   });
 }
 
+const shortcutsDirButton = document.getElementById("shortcutsFolderButton");
+if (shortcutsDirButton) {
+  shortcutsDirButton.onclick = async () => {
+    await window.electron.shortcutsFolder();
+  }
+}
+
+const categorySelect = document.getElementById("categorySelect") as HTMLSelectElement;
+if (categorySelect) {
+  categorySelect.oninput = () => {
+    const { value } = categorySelect;
+    const manageAppsTable = document.getElementById("manageAppsTable");
+
+    if (manageAppsTable) {
+      const trElements = manageAppsTable.getElementsByTagName("tr");
+      for (const trElement of trElements) {
+        const { value: selectValue } = trElement.getElementsByTagName("select")[0] as HTMLSelectElement;
+        console.log(selectValue);
+        if (selectValue === value) {
+          trElement.classList.replace("d-none", "d-block");
+        } else {
+          trElement.classList.replace("d-block", "d-none");
+        }
+      }
+    }
+  }
+}
+
 function addToOnlineGames(name: string, description: string, shortcut: string, banner: string) {
   const onlineGamesList = document.getElementById("onlineGamesList");
   if (onlineGamesList) {
@@ -392,8 +420,10 @@ function createTableRow(name: string, description: string, shortcut: string, ban
   const manageAppsTable = document.getElementById("manageAppsTable");
   if (manageAppsTable) {
     const row = document.createElement('tr');
+    row.classList.add("d-block");
 
     const nameTh = document.createElement('th');
+    nameTh.style.width = "100%";
     nameTh.setAttribute('scope', 'row');
     const nameInput = document.createElement('input');
     nameInput.type = 'text';

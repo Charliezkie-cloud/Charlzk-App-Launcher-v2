@@ -15,14 +15,14 @@
         </a>
         
         <form class="needs-validation col-5 d-flex justify-content-center animate-to-bottom" novalidate>
-          <input type="text" id="search" class="form-control" placeholder="Search Game or App">
+          <input type="text" id="search" class="form-control" placeholder="Search game or app">
         </form>
 
         <ul class="navbar-nav d-flex flex-row gap-4 col justify-content-end animate-to-bottom">
           <li class="nav-item">
             <a href="#" class="nav-link active">
               <i class="bi bi-joystick me-2"></i>
-              My Games
+              My games
             </a>
           </li>
           <li class="nav-item">
@@ -41,20 +41,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5">Settings</h1>
+          <h3 class="modal-title">Settings</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <p class="mb-3 fw-semibold">Icon Size</p>
+          <h5 class="mb-3 fw-semibold">Icon Size</h5>
           <div class="d-flex flex-row gap-2 mb-3">
-            <button type="button" class="btn btn-primary px-5" onclick="changeIcon(4)">Small</button>
-            <button type="button" class="btn btn-primary px-5" onclick="changeIcon(3)">Large</button>
+            <button type="button" class="btn btn-primary" onclick="changeIcon(4)">Small</button>
+            <button type="button" class="btn btn-primary" onclick="changeIcon(3)">Large</button>
           </div>
-          <p class="mb-3 fw-semibold">Apps Configuration</p>
+          <h5 class="mb-3 fw-semibold">Apps Configuration</h5>
           <div class="mb-3">
-            <button type="button" class="btn btn-primary px-5" data-bs-target="#manageAppsModal" data-bs-toggle="modal">Open</button>
+            <button type="button" class="btn btn-primary" data-bs-target="#manageAppsModal" data-bs-toggle="modal">Open</button>
           </div>
-          <p class="mb-3 fw-semibold">Made by Charles Henry Tinoy</p>
+          <h5 class="mb-3 fw-semibold">Made by Charles Henry Tinoy</h5>
           <div class="d-flex flex-row gap-3 mb-3">
             <a class="text-decoration-none" href="#" onclick="App.openLink('https://www.facebook.com/Charlzk05/')">
               <i class="bi bi-facebook me-1"></i>
@@ -94,10 +94,24 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5">Manage Apps</h1>
+          <h3 class="modal-title">Manage Apps</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#settingsModal" data-bs-toggle="modal"></button>
         </div>
         <div class="modal-body">
+          <div class="mb-3 row">
+            <div class="col">
+              <button type="button" class="btn btn-primary" id="shortcutsFolderButton">Shortcuts folder</button>
+            </div>
+            <div class="col d-flex flex-row align-items-center gap-3">
+              <div>Category</div>
+              <select class="form-select" id="categorySelect">
+                <option selected value="All">All</option>
+                <option value="OnlineGames">Online games</option>
+                <option value="OfflineGames">Offline games</option>
+                <option value="Apps">Apps</option>
+              </select>
+            </div>
+          </div>
           <form id="manageAppsForm" class="needs-validation" novalidate>
             <table class="table table-hover">
               <thead>
@@ -141,7 +155,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary px-5" form="manageAppsForm" data-bs-dismiss="modal" data-bs-target="#settingsModal" data-bs-toggle="modal">Save Changes</button>
+          <button type="submit" class="btn btn-primary" form="manageAppsForm" data-bs-dismiss="modal" data-bs-target="#settingsModal" data-bs-toggle="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -155,11 +169,11 @@
           <div class="d-flex flex-column align-items-center gap-3 w-100">
             <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row" id="onlineGamesButton">
               <i class="bi bi-steam"></i>
-              <span class="text-center w-100">Online Games</span>
+              <span class="text-center w-100">Online games</span>
             </button>
             <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row" id="offlineGamesButton">
               <i class="bi bi-wifi-off"></i>
-              <span class="text-center w-100">Offline Games</span>
+              <span class="text-center w-100">Offline games</span>
             </button>
             <button type="button" class="btn btn-primary w-100 animate-to-right d-flex flex-row" id="appsButton">
               <i class="bi bi-app text-center"></i>

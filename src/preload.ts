@@ -40,6 +40,11 @@ function saveChanges(newValue: string) {
   ipcRenderer.send("fromRenderer:saveChanges", newValue);
 }
 
+function shortcutsFolder() {
+  ipcRenderer.send("fromRenderer:shortcutsFolder");
+}
+
+
 
 contextBridge.exposeInMainWorld("electron", {
   onLoad,
@@ -50,4 +55,5 @@ contextBridge.exposeInMainWorld("electron", {
   selectBanner,
   selectedBanner,
   saveChanges,
+  shortcutsFolder,
 });

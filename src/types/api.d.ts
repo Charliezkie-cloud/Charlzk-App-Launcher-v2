@@ -11,6 +11,7 @@ declare global {
       selectBanner: (shortcut: string) => void;
       selectedBanner: (callback: (banner: string, shortcut: string) => void) => void;
       saveChanges: (newValue: string) => void;
+      shortcutsFolder: () => void;
     }
   }
 }
