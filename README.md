@@ -27,3 +27,7 @@ My private app launcher for windows made using
 
   - Build: `npm run build-sass`
   - Watch: `npm run watch-sass`
+
+# Images
+![1](https://github.com/user-attachments/assets/0f5a6d01-3488-4412-ab72-03e3b0d8ab56)
+![2](https://github.com/user-attachments/assets/b0270f27-aa4d-40ae-8a4c-c27bf66d6467)
