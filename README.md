@@ -4,6 +4,8 @@ My private app launcher for windows made using
 
 ![Using](https://skillicons.dev/icons?i=electron,ts,webpack)
 
+# [Download here](https://github.com/Charliezkie-cloud/Charlzk-App-Launcher-v2/releases/)
+
 # Development
 1. Download or clone the repository `git clone https://github.com/Charliezkie-cloud/Charlzk-App-Launcher-v2.git`
 2. Install the npm packages `npm install`
