@@ -18816,12 +18816,12 @@ progress {
 }
 
 * {
-  scrollbar-width: auto;
+  scrollbar-width: 10px;
   scrollbar-color: #373737 #191919;
 }
 
 *::-webkit-scrollbar {
-  width: 16px;
+  width: 10px;
 }
 
 *::-webkit-scrollbar-track {
@@ -18831,10 +18831,10 @@ progress {
 *::-webkit-scrollbar-thumb {
   background-color: #373737;
   border-radius: 10px;
-  border: 3px solid #ffffff;
+  box-shadow: inset 0 0 0 3px #ffffff;
 }
 
-::-webkit-scrollbar-corner {
+*::-webkit-scrollbar-corner {
   background: rgba(0, 0, 0, 0.5);
 }
 

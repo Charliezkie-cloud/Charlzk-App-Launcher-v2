@@ -5,7 +5,7 @@ import started from 'electron-squirrel-startup';
 // Events
 import mainEvents from './events/main';
 
-const production = false;
+const production = true;
 
 if (started) {
   app.quit();

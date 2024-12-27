@@ -8,7 +8,7 @@ const node_path_1 = __importDefault(require("node:path"));
 const electron_squirrel_startup_1 = __importDefault(require("electron-squirrel-startup"));
 // Events
 const main_1 = __importDefault(require("./events/main"));
-const production = false;
+const production = true;
 if (electron_squirrel_startup_1.default) {
     electron_1.app.quit();
 }

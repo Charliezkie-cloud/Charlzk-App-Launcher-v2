@@ -150,6 +150,11 @@ if (
       easing: "easeOutQuint",
       delay: anime.stagger(100)
     });
+
+    onlineGamesContainer.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   offlineGamesButton.onclick = () => {
@@ -169,6 +174,11 @@ if (
       easing: "easeOutQuint",
       delay: anime.stagger(100)
     });
+
+    offlineGamesContainer.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   appsButton.onclick = () => {
@@ -186,6 +196,11 @@ if (
       duration: duration,
       easing: "easeOutQuint",
       delay: anime.stagger(100)
+    });
+
+    appsContainer.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
   }
 }
@@ -229,9 +244,16 @@ if (categorySelect) {
 
     if (manageAppsTable) {
       const trElements = manageAppsTable.getElementsByTagName("tr");
+
+      if (value === "All") {
+        for (const trElement of trElements) {
+          trElement.classList.replace("d-none", "d-block");
+        }
+        return;
+      }
+      
       for (const trElement of trElements) {
         const { value: selectValue } = trElement.getElementsByTagName("select")[0] as HTMLSelectElement;
-        console.log(selectValue);
         if (selectValue === value) {
           trElement.classList.replace("d-none", "d-block");
         } else {
@@ -271,6 +293,15 @@ function addToOnlineGames(name: string, description: string, shortcut: string, b
     button.classList.add('btn', 'btn-primary', 'fw-semibold', 'px-5', 'open-btn');
     button.textContent = 'Open';
     button.onclick = async () => {
+      const toastElement = document.getElementById("openToast") as HTMLElement;
+      const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
+
+      if (toastElement) {
+        const toastBody = toastElement.getElementsByClassName("toast-body")[0];
+        toastBody.innerHTML = `Opening <span class="fw-semibold">${name}...</span>`;
+        toast.show();
+      }
+
       await window.electron.openApp(name, shortcut);
     }
 
@@ -329,6 +360,15 @@ function addToOfflineGames(name: string, description: string, shortcut: string, 
     button.classList.add('btn', 'btn-primary', 'fw-semibold', 'px-5', 'open-btn');
     button.textContent = 'Open';
     button.onclick = async () => {
+      const toastElement = document.getElementById("openToast") as HTMLElement;
+      const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
+
+      if (toastElement) {
+        const toastBody = toastElement.getElementsByClassName("toast-body")[0];
+        toastBody.innerHTML = `Opening <span class="fw-semibold">${name}...</span>`;
+        toast.show();
+      }
+
       await window.electron.openApp(name, shortcut);
     }
 
@@ -387,6 +427,15 @@ function addToApps(name: string, description: string, shortcut: string, banner: 
     button.classList.add('btn', 'btn-primary', 'fw-semibold', 'px-5', 'open-btn');
     button.textContent = 'Open';
     button.onclick = async () => {
+      const toastElement = document.getElementById("openToast") as HTMLElement;
+      const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
+
+      if (toastElement) {
+        const toastBody = toastElement.getElementsByClassName("toast-body")[0];
+        toastBody.innerHTML = `Opening <span class="fw-semibold">${name}...</span>`;
+        toast.show();
+      }
+
       await window.electron.openApp(name, shortcut);
     }
 
@@ -423,7 +472,6 @@ function createTableRow(name: string, description: string, shortcut: string, ban
     row.classList.add("d-block");
 
     const nameTh = document.createElement('th');
-    nameTh.style.width = "100%";
     nameTh.setAttribute('scope', 'row');
     const nameInput = document.createElement('input');
     nameInput.type = 'text';

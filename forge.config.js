@@ -2,7 +2,9 @@ module.exports = {
   packagerConfig: {
     asar: false,
     ignore: [
-      "^/src/"
+      "^/src/",
+      "^/dist/shortcuts/",
+      "^/dist/banners/"
     ]
   },
   rebuildConfig: {},

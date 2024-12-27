@@ -115,13 +115,13 @@
           <form id="manageAppsForm" class="needs-validation" novalidate>
             <table class="table table-hover">
               <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Shortcut</th>
-                  <th scope="col">Banner</th>
-                  <th scope="col">Category</th>
-                </tr>
+                <th scope="col" class="row">
+                  <div class="col text-center">Name</div>
+                  <div class="col text-center">Description</div>
+                  <div class="col text-center">Shortcut</div>
+                  <div class="col text-center">Banner</div>
+                  <div class="col text-center">Category</div>
+                </th>
               </thead>
             
               <tbody id="manageAppsTable">
@@ -161,7 +161,21 @@
     </div>
   </div>
 
+  <!-- Open toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-4">
+    <div id="openToast" class="toast">
+      <div class="toast-header">
+        <img src="./assets/img/Electron-logo.svg" alt="Logo.svg" height="24" width="24" class="rounded-pill me-2">
+        <strong class="me-auto">Notification</strong>
+        <small>Now</small>
+        <button type="button" class="btn btn-close" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body"></div>
+    </div>
+  </div>
+
   <main class="position-fixed h-100 w-100 bg-body">
+
     <div class="row h-100">
       <div class="col-2 pe-0 animate-to-right">
         <div class="p-4 d-flex flex-column align-items-center gap-4">
