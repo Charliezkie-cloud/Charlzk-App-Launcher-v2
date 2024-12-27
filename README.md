@@ -1,6 +1,6 @@
 ![Logo](https://github.com/user-attachments/assets/5adebf09-f187-4415-9b08-e5e9f5fe0588)
 
-My private app launcher made using
+My private app launcher for windows made using
 
 ![Using](https://skillicons.dev/icons?i=electron,ts,webpack)
 
